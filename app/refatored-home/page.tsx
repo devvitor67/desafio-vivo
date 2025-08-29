@@ -23,7 +23,7 @@ export default function Home() {
           </h3>
         </div>
         <div className="flex flex-col sm:flex-row items-center gap-4">
-          <Link href="/chatbot">
+          <Link href="https://landbot.online/v3/H-3103818-KOZXKJZKK1AGZ3MI/index.html">
             <button className="text-zinc-50 bg-gradient-to-r from-purple-700 via-fuchsia-600 to-cyan-500 px-4 py-2 rounded-md font-medium flex items-center gap-2 transition-transform hover:scale-105">
               Vivo Detecta <Brain size={16} />
             </button>
