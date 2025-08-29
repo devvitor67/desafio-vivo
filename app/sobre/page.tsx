@@ -1,163 +1,138 @@
 "use client"
+
 import { Header } from "@/components/Header"
-import Image from "next/image"
 import Link from "next/link"
-import { motion } from "framer-motion"
 
 export default function ProjetoNarrativaPage() {
   const sections = [
     {
       title: "Introdução",
-      text: "O aumento constante de golpes digitais, como phishing, engenharia social e fraudes por mensagens, representa uma ameaça direta à segurança de milhões de brasileiros. Diante desse cenário, criamos o Vivo Detecta, um agente de segurança digital que combina chatbot inteligente e modo educativo. Ele utiliza dados abertos de segurança cibernética para identificar mensagens e sites falsos em tempo real, além de ensinar boas práticas de proteção digital aos clientes. O objetivo central é simples: reduzir o impacto dos golpes, aumentar a confiança no ambiente digital e oferecer orientação prática para qualquer pessoa, independentemente do seu nível de conhecimento técnico.",
+      content: (
+        <p>
+          O aumento constante de golpes digitais, como phishing, engenharia social e fraudes por mensagens, representa uma ameaça direta à segurança de milhões de brasileiros. Diante desse cenário, criamos o Vivo Detecta, um agente de segurança digital que combina chatbot inteligente e modo educativo. Ele utiliza dados abertos de segurança cibernética para identificar mensagens e sites falsos em tempo real, além de ensinar boas práticas de proteção digital aos clientes. O objetivo central é simples: reduzir o impacto dos golpes, aumentar a confiança no ambiente digital e oferecer orientação prática para qualquer pessoa, independentemente do seu nível de conhecimento técnico.
+        </p>
+      ),
     },
     {
       title: "Metodologia de Análise de Dados",
-      text: (
-        <div className="space-y-4">
+      content: (
+        <>
           <p>A base do projeto está na análise estruturada de dados abertos. O processo seguiu quatro etapas principais:</p>
           <ul className="list-disc list-inside space-y-1">
-            <li><strong>Coleta de dados:</strong> múltiplas fontes como CERT.br, Anatel, SaferNet, NIC.br, GitHub (phishing.army e mitchellkrogza), PhishTank, URLhaus, OpenPhish, relatórios setoriais e consultas WHOIS.</li>
-            <li><strong>Organização:</strong> padronização, remoção de duplicidades e categorização (phishing, engenharia social, domínios look-alike, números suspeitos e links encurtados).</li>
-            <li><strong>Análise e interpretação:</strong> filtros de consistência, enriquecimento de dados (ASN, país de origem, data de criação do domínio, indícios de spoofing) e scripts automatizados de correlação.</li>
-            <li><strong>Tradução para linguagem acessível:</strong> chatbot apresenta explicações simples como “Este link é suspeito porque o domínio foi criado há menos de 7 dias e não pertence ao site oficial do banco”.</li>
+            <li><strong>Coleta de dados:</strong> múltiplas fontes como CERT.br, Anatel, SaferNet, NIC.br, GitHub, PhishTank, URLhaus, OpenPhish, relatórios e WHOIS.</li>
+            <li><strong>Organização:</strong> padronização, deduplicação e categorização (phishing, engenharia social, look-alike, SMS e encurtados).</li>
+            <li><strong>Análise e interpretação:</strong> filtros de consistência, enriquecimento (ASN, país, data de criação, spoofing) e correlações automatizadas.</li>
+            <li><strong>Tradução acessível:</strong> chatbot explica, por exemplo, “domínio criado há 7 dias e não é oficial”.</li>
           </ul>
-        </div>
+        </>
       ),
     },
     {
       title: "Visualizações de Dados",
-      text: (
+      content: (
         <ul className="list-disc list-inside space-y-1">
           <li>Gráficos de categorias de phishing (Brasil, Exterior e Totais)</li>
           <li>Linha do tempo da evolução dos golpes</li>
-          <li>Distribuição por ASN e países de origem</li>
-          <li>Casos de domínios recém-criados em ataques ativos</li>
+          <li>Distribuição por ASN e país de origem</li>
+          <li>Domínios recém-criados em ataques ativos</li>
         </ul>
       ),
     },
     {
       title: "Desafios Enfrentados",
-      text: (
+      content: (
         <ul className="list-disc list-inside space-y-1">
-          <li>Heterogeneidade dos dados: necessidade de padronização.</li>
-          <li>Incompletude: registros sem país de origem ou data de criação.</li>
-          <li>Complexidade de tradução técnica: simplificar termos de segurança digital.</li>
+          <li>Heterogeneidade dos dados: padronização necessária</li>
+          <li>Incompletude: ausência de país ou data de criação</li>
+          <li>Simplificação técnica: tornar jargões acessíveis</li>
         </ul>
       ),
     },
     {
       title: "Considerações sobre Sustentabilidade e ODS",
-      text: (
+      content: (
         <ul className="list-disc list-inside space-y-1">
-          <li><strong>ODS 9:</strong> fortalece a infraestrutura digital e promove inovação.</li>
-          <li><strong>ODS 16:</strong> aumenta a confiança digital, protege direitos e combate fraudes.</li>
-          <li><strong>ODS 17:</strong> integra dados de órgãos públicos, empresas e comunidades técnicas.</li>
-          <li>Solução escalável, de baixo custo e baixo impacto ambiental, com alto impacto social.</li>
+          <li><strong>ODS 9:</strong> infraestrutura digital e inovação</li>
+          <li><strong>ODS 16:</strong> confiança digital, direitos e combate a fraudes</li>
+          <li><strong>ODS 17:</strong> integração de dados públicos, privados e comunidade</li>
+          <li>Escalável, baixo custo e impacto ambiental reduzido</li>
         </ul>
       ),
     },
     {
       title: "Impacto Social e Ambiental Esperado",
-      text: (
-        <div className="space-y-4">
+      content: (
+        <>
           <p><strong>Social:</strong></p>
           <ul className="list-disc list-inside space-y-1">
-            <li>Redução de prejuízos financeiros e emocionais causados por golpes.</li>
-            <li>Educação contínua em boas práticas digitais.</li>
-            <li>Fortalecimento da confiança na internet e nos serviços digitais.</li>
+            <li>Redução de perdas financeiras e emocionais</li>
+            <li>Educação contínua em segurança digital</li>
+            <li>Fortalecimento da confiança em serviços online</li>
           </ul>
           <p><strong>Ambiental:</strong></p>
           <ul className="list-disc list-inside space-y-1">
-            <li>Consumo mínimo de recursos físicos.</li>
-            <li>Alternativa sustentável a campanhas impressas e materiais de alto custo.</li>
+            <li>Consumo mínimo de recursos físicos</li>
+            <li>Alternativa digital a campanhas impressas</li>
           </ul>
-        </div>
+        </>
       ),
     },
     {
       title: "Conclusões e Lições Aprendidas",
-      text: (
+      content: (
         <ul className="list-disc list-inside space-y-1">
-          <li>Dados abertos, bem analisados, se transformam em prevenção real.</li>
-          <li>Tecnologia só gera valor quando impacta positivamente as pessoas.</li>
-          <li>Educação digital é tão importante quanto detecção de golpes.</li>
-          <li>Cooperação multissetorial fortalece a eficácia da solução.</li>
-          <li>O projeto criou uma camada ativa e educativa de proteção digital.</li>
+          <li>Dados abertos bem tratados viram prevenção real</li>
+          <li>Tecnologia só vale quando impacta positivamente</li>
+          <li>Educação digital é tão vital quanto detecção de ataques</li>
+          <li>Cooperação multissetorial aumenta eficácia</li>
+          <li>Camada educativa ativa reforça a proteção</li>
         </ul>
       ),
     },
     {
       title: "Referências",
-      text: (
+      content: (
         <ul className="list-disc list-inside space-y-1">
-          <li>CERT.br – Estatísticas e relatórios de incidentes.</li>
-          <li>Anatel – Relatórios de segurança digital.</li>
-          <li>SaferNet Brasil – Pesquisas sobre crimes cibernéticos.</li>
-          <li>NIC.br – Dados técnicos de infraestrutura da internet no Brasil.</li>
-          <li>GitHub (phishing.army, mitchellkrogza) – Listas atualizadas de phishing.</li>
-          <li>PhishTank – Repositório colaborativo de domínios maliciosos.</li>
-          <li>URLhaus – Base de dados de URLs maliciosas.</li>
-          <li>OpenPhish – Inteligência automatizada sobre phishing.</li>
-          <li>Relatórios setoriais de bancos e telecomunicações.</li>
-          <li>Consultas WHOIS – Informações sobre registros de domínios.</li>
+          <li>CERT.br – Estatísticas de incidentes</li>
+          <li>Anatel – Relatórios de segurança digital</li>
+          <li>SaferNet Brasil – Pesquisas de crimes cibernéticos</li>
+          <li>NIC.br – Infraestrutura da Internet no Brasil</li>
+          <li>GitHub, PhishTank, URLhaus, OpenPhish – Listas de phishing</li>
+          <li>Relatórios setoriais e consultas WHOIS</li>
         </ul>
       ),
     },
   ]
 
   return (
-    <main className="relative min-h-screen w-full text-neutral-900 bg-gradient-to-b from-white to-violet-50">
-      <div className="absolute inset-0 -z-10">
-        <Image
-          src="/projeto-bg.jpg"
-          alt="Fundo projeto acadêmico"
-          fill
-          priority
-          className="object-cover brightness-75"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-white/90 via-white/70 to-transparent" />
-      </div>
+    <main className="min-h-screen bg-zinc-950 bg-[radial-gradient(ellipse_at_top,rgba(255,255,255,0.1)_0%,rgba(0,0,0,0)_70%)] text-zinc-100">
+      <Header />
 
-      {/* Header */}
-      <header className="absolute top-0 left-0 w-full z-10">
-        <Header />
-      </header>
-
-      {/* Conteúdo estilo blog */}
-      <section className="relative max-w-4xl mx-auto px-8 sm:px-16 py-20 space-y-12">
-        <h1 className="text-5xl font-extrabold text-violet-700">
-          Sobre o nosso projeto - Vivo Detecta
+      <section className="max-w-5xl mx-auto px-6 sm:px-12 md:px-24 py-20 space-y-12 pt-28">
+        <h1 className="text-4xl sm:text-5xl font-extrabold text-center">
+          Sobre o nosso projeto – Vivo Detecta
         </h1>
 
-        {sections.map((sec, i) => (
-          <motion.article
-            key={i}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: i * 0.15 }}
-            className="prose prose-lg max-w-none"
+        {sections.map(({ title, content }) => (
+          <article
+            key={title}
+            className="bg-zinc-900 rounded-lg p-6 border border-violet-300 space-y-3"
           >
-            <h2 className="text-3xl font-semibold text-violet-700 mb-4">
-              {sec.title}
+            <h2 className="text-2xl font-semibold text-violet-400">
+              {title}
             </h2>
-            <div className="text-neutral-800">{sec.text}</div>
-          </motion.article>
+            <div className="space-y-3">{content}</div>
+          </article>
         ))}
 
-        {/* Link voltar */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="flex justify-center mt-12"
-        >
+        <div className="flex justify-center">
           <Link
             href="/"
-            className="inline-block bg-violet-600 hover:bg-violet-700 text-white font-semibold rounded-lg px-8 py-3 shadow-lg transition hover:scale-105"
+            className="bg-violet-600 hover:bg-violet-700 text-white font-semibold rounded-lg px-8 py-3 transition"
           >
             ← Voltar para Home
           </Link>
-        </motion.div>
+        </div>
       </section>
     </main>
   )

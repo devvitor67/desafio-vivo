@@ -3,11 +3,10 @@ import { Header } from "@/components/Header"
 import Image from "next/image"
 import { useState } from "react"
 import Link from "next/link"
-import { motion } from "framer-motion"
 
 export default function EducativoPage() {
-  const [quizStep, setQuizStep] = useState<number>(0)
-  const [score, setScore] = useState<number>(0)
+  const [quizStep, setQuizStep] = useState(0)
+  const [score, setScore] = useState(0)
 
   const questions = [
     {
@@ -76,7 +75,7 @@ export default function EducativoPage() {
   const cardData = [
     {
       title: "Como reconhecer um golpe de phishing",
-      text: "Golpes de phishing tentam enganar você pedindo informações pessoais por meio de links falsos, mensagens urgentes e remetentes desconhecidos.",
+      text: <p>Golpes de phishing tentam enganar você pedindo informações pessoais por meio de links falsos, mensagens urgentes e remetentes desconhecidos.</p>,
       img: "/phishing.jpg",
     },
     {
@@ -92,140 +91,88 @@ export default function EducativoPage() {
     },
     {
       title: "Como funcionam os sites falsos?",
-      text: "Sites falsos imitam sites reais para roubar seus dados. Eles podem ter URLs parecidas, solicitar dados confidenciais e não usar conexões seguras.",
+      text: <p>Sites falsos imitam sites reais para roubar seus dados. Eles podem ter URLs parecidas, solicitar dados confidenciais e não usar conexões seguras.</p>,
       img: "/sites-falsos.jpg",
     },
     {
       title: "O que significa engenharia social?",
-      text: "Engenharia social é a manipulação psicológica para enganar pessoas e obter informações confidenciais, como senhas e códigos.",
+      text: <p>Engenharia social é a manipulação psicológica para enganar pessoas e obter informações confidenciais, como senhas e códigos.</p>,
       img: "/engenharia-social.jpg",
     },
   ]
 
   return (
-    <main className="relative min-h-screen w-full text-neutral-900 bg-gradient-to-b from-white to-violet-50">
-      {/* Fundo */}
-      <div className="absolute inset-0 -z-10">
-        <Image
-          src="/imagem.jpg"
-          alt="Fundo inteligência artificial"
-          fill
-          priority
-          className="object-cover brightness-75"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-white/90 via-white/70 to-transparent" />
-      </div>
+    <main className="min-h-screen bg-zinc-950 bg-[radial-gradient(ellipse_at_top,rgba(255,255,255,0.1)_0%,rgba(0,0,0,0)_70%)] text-zinc-100">
+      <Header />
 
-      {/* Header */}
-      <header className="absolute top-0 left-0 w-full z-10">
-        <Header />
-      </header>
+      <section className="max-w-5xl mx-auto px-6 sm:px-12 md:px-24 py-20 space-y-12 pt-28">
+        <h1 className="text-4xl sm:text-5xl font-extrabold text-center">Modo Educativo — Aprenda a se Proteger</h1>
 
-      {/* Conteúdo */}
-      <section className="relative max-w-5xl mx-auto px-8 sm:px-16 py-20 space-y-12">
-
-        <h1 className="text-5xl font-extrabold text-violet-700 max-w-3xl">
-          🔐 Modo Educativo — Aprenda a se Proteger
-        </h1>
-
-        {/* Cards com imagens */}
-        <div className="grid gap-8 max-w-4xl sm:grid-cols-2">
+        {/* Cards */}
+        <div className="grid gap-8 sm:grid-cols-2">
           {cardData.map((card, i) => (
-            <motion.article
-              key={i}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: i * 0.2 }}
-              className="bg-white shadow-lg rounded-2xl overflow-hidden border border-violet-300 hover:shadow-violet-400 transition-shadow"
-            >
+            <article key={i} className="bg-zinc-900 rounded-lg overflow-hidden border border-violet-300">
               <div className="relative h-48 w-full">
-                <Image
-                  src={card.img}
-                  alt={card.title}
-                  fill
-                  className="object-cover"
-                />
+                <Image src={card.img} alt={card.title} fill className="object-cover" />
               </div>
-              <div className="p-6">
-                <h2 className="text-2xl font-semibold text-violet-600 mb-3">{card.title}</h2>
-                <p className="text-neutral-700">{card.text}</p>
+              <div className="p-6 space-y-3">
+                <h2 className="text-2xl font-semibold text-violet-400">{card.title}</h2>
+                {card.text}
               </div>
-            </motion.article>
+            </article>
           ))}
         </div>
 
         {/* Quiz */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5 }}
-          className="max-w-full bg-white rounded-xl p-6 shadow-lg border border-violet-300"
-        >
-          <h2 className="text-3xl font-bold text-violet-700 mb-6">Quiz: Você cairia nesse golpe?</h2>
-
+        <div className="bg-zinc-900 rounded-lg p-6 border border-violet-300">
+          <h2 className="text-3xl font-bold text-violet-400 mb-6">Quiz: Você cairia nesse golpe?</h2>
           {quizStep < questions.length ? (
-            <div>
-              <p className="mb-6 text-xl text-neutral-800">{questions[quizStep].question}</p>
+            <>
+              <p className="mb-6 text-lg">{questions[quizStep].question}</p>
               <div className="flex flex-col gap-4">
                 {questions[quizStep].options.map((opt, i) => (
-                  <motion.button
-                    whileTap={{ scale: 0.95 }}
-                    whileHover={{ scale: 1.05 }}
+                  <button
                     key={i}
                     onClick={() => handleAnswer(opt.correct)}
                     className="bg-violet-600 hover:bg-violet-700 text-white rounded-lg py-3 px-4 font-semibold transition"
                   >
                     {opt.text}
-                  </motion.button>
+                  </button>
                 ))}
               </div>
-            </div>
+            </>
           ) : (
             <div className="text-center">
-              <p className="text-xl mb-4 text-violet-700">Você acertou {score} de {questions.length} perguntas!</p>
+              <p className="text-lg mb-4">Você acertou {score} de {questions.length} perguntas!</p>
               <button
-                onClick={() => {
-                  setScore(0)
-                  setQuizStep(0)
-                }}
+                onClick={() => { setScore(0); setQuizStep(0) }}
                 className="bg-violet-600 hover:bg-violet-700 rounded-lg py-3 px-6 font-semibold text-white transition"
               >
                 Tentar novamente
               </button>
             </div>
           )}
-        </motion.div>
+        </div>
 
         {/* Checklist */}
-        <motion.div
-          initial={{ opacity: 0, x: -40 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5 }}
-          className="max-w-full bg-white rounded-xl p-6 shadow-lg border border-violet-300 text-neutral-800"
-        >
-          <h2 className="text-3xl font-bold text-violet-700 mb-4">Checklist: o que fazer ao receber uma mensagem suspeita</h2>
+        <div className="bg-zinc-900 rounded-lg p-6 border border-violet-300">
+          <h2 className="text-3xl font-bold text-violet-400 mb-4">Checklist: o que fazer ao receber uma mensagem suspeita</h2>
           <ul className="list-disc list-inside space-y-2">
             <li>Não clique em links ou arquivos suspeitos.</li>
             <li>Verifique o remetente e o contexto da mensagem.</li>
             <li>Não forneça dados pessoais ou códigos por telefone ou mensagens.</li>
-            <li>Use ferramentas como o <span className="font-semibold text-violet-600">Vivo Detecta</span> para análise rápida.</li>
+            <li>Use ferramentas como o <span className="font-semibold text-violet-400">Vivo Detecta</span> para análise rápida.</li>
             <li>Bloqueie e reporte contatos suspeitos.</li>
             <li>Mantenha seu antivírus e sistema atualizados.</li>
           </ul>
-        </motion.div>
+        </div>
 
-        {/* Link para voltar */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="max-w-full flex justify-center mt-10"
-        >
-          <Link href="/" className="inline-block bg-violet-600 hover:bg-violet-700 text-white font-semibold rounded-lg px-8 py-3 shadow-lg transition hover:scale-105">
+        {/* Voltar */}
+        <div className="flex justify-center">
+          <Link href="/" className="bg-violet-600 hover:bg-violet-700 text-white font-semibold rounded-lg px-8 py-3 transition">
             ← Voltar para Home
           </Link>
-        </motion.div>
-
+        </div>
       </section>
     </main>
   )
