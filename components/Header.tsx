@@ -20,7 +20,7 @@ export function Header() {
             </div>
             <nav className="hidden md:flex items-center gap-6 pr-8 text-black font-bold">
                 <Link href="/" prefetch>Home</Link>
-                <Link href="https://landbot.online/v3/H-3103818-KOZXKJZKK1AGZ3MI/index.html" prefetch>Vivo Detecta IA</Link>
+                <Link href="https://landbot.online/v3/H-3123258-ZYH9QENRL4LKS61Q/index.html" prefetch>Vivo Detecta IA</Link>
                 <Link href="/sobre" prefetch>Sobre</Link>
                 <Link href="/aprendizado" prefetch>Educação</Link>
             </nav>
@@ -43,7 +43,7 @@ export function Header() {
                         <X size={32} />
                     </button>
                     <Link onClick={toggleMenu} href="/" prefetch>Home</Link>
-                    <Link onClick={toggleMenu} href="https://landbot.online/v3/H-3103818-KOZXKJZKK1AGZ3MI/index.html" prefetch>Chatbot</Link>
+                    <Link onClick={toggleMenu} href="https://landbot.online/v3/H-3123258-ZYH9QENRL4LKS61Q/index.html" prefetch>Chatbot</Link>
                     <Link onClick={toggleMenu} href="/sobre" prefetch>Sobre</Link>
                     <Link onClick={toggleMenu} href="/aprendizado" prefetch>Modo educativo</Link>
                 </div>
